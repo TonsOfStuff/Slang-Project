@@ -1,8 +1,5 @@
 from datetime import datetime
 
-# ------------------------------
-# Bond Pricing Function
-# ------------------------------
 def price_bond(face_value, coupon_rate, maturity_date, discount_rate):
     today = datetime.today()
     maturity = datetime.strptime(maturity_date, "%Y-%m-%d")
@@ -17,9 +14,7 @@ def price_bond(face_value, coupon_rate, maturity_date, discount_rate):
     present_value += face_value / (1 + discount_rate) ** years
     return round(present_value, 2)
 
-# ------------------------------
-# Main Program
-# ------------------------------
+
 def main():
     try:
         face_value = float(input("Enter the bond's face value (e.g. 1000): "))
