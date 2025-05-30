@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def price_bond(faceValue, couponRate, maturityDate, discountRate):
+def priceBond(faceValue, couponRate, maturityDate, discountRate):
     today = datetime.today()
     maturity = datetime.strptime(maturityDate, "%Y-%m-%d")
     years = int((maturity - today).days / 365)
@@ -25,7 +25,7 @@ def main():
         couponRate = couponPercent / 100
         discountRate = discountPercent / 100
 
-        price = price_bond(faceVal, couponRate, maturityDate, discountRate)
+        price = priceBond(faceVal, couponRate, maturityDate, discountRate)
         print(f"\n Bond is valued at: ${price}")
 
     except Exception as e:
