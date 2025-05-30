@@ -1,35 +1,35 @@
 from datetime import datetime
 
-def price_bond(face_value, coupon_rate, maturity_date, discount_rate):
+def price_bond(faceValue, couponRate, maturityDate, discountRate):
     today = datetime.today()
-    maturity = datetime.strptime(maturity_date, "%Y-%m-%d")
+    maturity = datetime.strptime(maturityDate, "%Y-%m-%d")
     years = int((maturity - today).days / 365)
 
-    coupon_payment = face_value * coupon_rate
-    present_value = 0
+    couponPayment = faceValue * couponRate
+    presentValue = 0
 
     for t in range(1, years + 1):
-        present_value += coupon_payment / (1 + discount_rate) ** t
+        presentValue += couponPayment / (1 + discountRate) ** t
 
-    present_value += face_value / (1 + discount_rate) ** years
-    return round(present_value, 2)
+    presentValue += faceValue / (1 + discountRate) ** years
+    return round(presentValue, 2)
 
 
 def main():
     try:
-        face_value = float(input("Enter the bond's face value (e.g. 1000): "))
-        coupon_percent = float(input("Enter the annual coupon rate (in %, e.g. 5): "))
-        maturity_date = input("Enter the maturity date (YYYY-MM-DD, e.g. 2030-12-31): ")
-        discount_percent = float(input("Enter the discount rate (in %, e.g. 4.5): "))
+        faceVal = float(input("Enter the bond's face value (e.g. 1000): "))
+        couponPercent = float(input("Enter the annual coupon rate (in %, e.g. 5): "))
+        maturityDate = input("Enter the maturity date (YYYY-MM-DD, e.g. 2030-12-31): ")
+        discountPercent = float(input("Enter the discount rate (in %, e.g. 4.5): "))
 
-        coupon_rate = coupon_percent / 100
-        discount_rate = discount_percent / 100
+        couponRate = couponPercent / 100
+        discountRate = discountPercent / 100
 
-        price = price_bond(face_value, coupon_rate, maturity_date, discount_rate)
+        price = price_bond(faceVal, couponRate, maturityDate, discountRate)
         print(f"\n Bond is valued at: ${price}")
 
     except Exception as e:
-        print(f"\n❌ Error: {str(e)}")
+        print(f"\nError: {str(e)}")
 
 if __name__ == "__main__":
     main()
